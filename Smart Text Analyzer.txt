@@ -1,0 +1,76 @@
+def Smart_Text_Analyzer(input_str):
+    letterCount = 0
+    letterList = []
+    vowelsCount = 0
+    vowelList = []
+    consonantsCount = 0
+    consonantsList = []
+    digitsCount = 0
+    digitsList = []
+    scCount = 0
+    scList = []
+    maxCount=0
+    frequent = ""
+    palindromeCount = 0
+    palindrome = []
+    vowels = 'AEIOUaeiou'
+    words = input_str.split()
+    onlyWords = [word for word in words if word.isalpha()]
+    
+    length = len([ch for ch in input_str if ch!=' '])
+    chkLetter = lambda ch: ch.isalpha()
+    chkVowel = lambda ch: ch in vowels
+    chkDigit = lambda ch: ch.isdigit()
+    chkSymbol = lambda ch: not ch.isdigit() and not ch.isalpha() and ch!=" "
+
+    for ch in input_str:
+        # letters 
+        if(chkLetter(ch)):
+            letterCount += 1
+            letterList.append(ch)
+            # vowel 
+            if(chkVowel(ch)):
+                vowelsCount += 1
+                vowelList.append(ch)
+            else:
+                # consonants 
+                consonantsCount += 1
+                consonantsList.append(ch)
+                # digits 
+        elif(chkDigit(ch)):
+            digitsCount += 1
+            digitsList.append(ch)
+            # symbols 
+        elif(chkSymbol(ch)):
+            scCount += 1
+            scList.append(ch)
+            # frequent characters 
+        if ch != ' ':
+            count = input_str.count(ch)
+            if count>maxCount:
+                maxCount = count
+                frequent = ch          
+        #  Palindromes 
+    for word in words:
+        if len(word) > 1 and word.lower() == word.lower()[::-1]:  
+            palindrome.append(word)
+
+    if palindrome:
+        print(f"Palindromes: {palindrome}")
+    else:
+        print("No palindrome found")
+    print("\n\t\t\t Smart Text Analyzer")
+    print("*"*70)
+    print(f"Your String is {input_str}")
+    print(f"Total Characters {length}")
+    print(f"Total Words {len(onlyWords)} \t\t Lists of Words: {onlyWords}")
+    print(f"Total Letters {letterCount} \t Lists of Letters: {letterList}")
+    print(f"Total Vowels {vowelsCount} \t\t Lists of Vowels: {vowelList}")
+    print(f"Total Consonants {consonantsCount} \t Lists of Consonants: {consonantsList}")
+    print(f"Total Digits {digitsCount} \t\t Lists of Digits: {digitsList}")
+    print(f"Total Symbols {scCount} \t Lists of Special Characters: {scList}")
+    print(f"Most Frequent Character : {frequent}. It appears {maxCount} times")
+    print(f"Palindromes: {palindrome}")
+    print("*"*70)
+input_str = input("Enter string: ")
+Smart_Text_Analyzer(input_str)

@@ -1,0 +1,52 @@
+mazhar khan
+# Question1
+# original_list = [1,2,2,3,4,4,5,6,6]
+# unique_list = []
+# for list in original_list:
+#     if list not in unique_list:
+#         unique_list.append(list)
+# print(unique_list)
+
+# Question2
+# integers = (1,2,3,4,5,6,7,8,9,10)
+# even = 0
+# odd = 0
+# for i in integers:
+#     if ((i%2)==0):
+#         even+=1
+#     else:
+#         odd+=1
+# print(f"odd numbers are: {odd}")
+# print(f"even numbers are: {even}")
+
+# Question3
+total_bill = 0
+item_price = []
+item_list_name = [] 
+product = int(input("how many product do you wanna enter in bill?  "))
+for i in range(product):
+    name = input("Enter item name please: ")
+    price = int(input("Enter item price: "))
+    item_list_name.append(name)
+    item_price.append(price)
+
+
+total_bill = sum(item_price)
+if total_bill>1000:
+    discounted_price=total_bill*0.1
+
+
+max_price_item = max(item_price)
+cheap_price_item = min(item_price)
+new_discounted_price = total_bill-discounted_price
+
+
+print(f"\n-----------------------------------\n"
+      f"total item : {len(item_list_name)}\n"
+      f"max item you bought: {max_price_item}\n"
+      f"cheap  item you bought: {cheap_price_item}\n"
+      f"total bill : {total_bill}\n"
+      f"discounted price -{discounted_price}\n"
+      f"new total amount  = {new_discounted_price}\n"
+      f"-----------------------------------\n")
+
